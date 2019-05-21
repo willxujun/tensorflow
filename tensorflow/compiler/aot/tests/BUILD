@@ -13,7 +13,7 @@ load("//tensorflow:tensorflow.bzl", "tf_cc_test")
 
 test_suite(
     name = "all_tests",
-    tags = ["manual"],
+	tags = ["manual"],
     tests = [
         ":test_graph_tfadd_test",
         ":test_graph_tfadd_with_ckpt_saver_test",
@@ -77,7 +77,7 @@ genrule(
     cmd = "CUDA_VISIBLE_DEVICES='' " +
           "$(location :make_test_graphs) --out_dir $(@D)",
     tags = ["manual"],
-    tools = [":make_test_graphs"],
+	tools = [":make_test_graphs"],
 )
 
 tf_library(
@@ -91,9 +91,7 @@ tf_library(
     # compile but the others in this directory succeed, you may need to
     # expand the "required by all tf_library targets" list in tfcompile.bzl.
     include_standard_runtime_deps = False,
-    tags = [
-        "manual",
-    ],
+	tags = ["manual"],
 )
 
 tf_library(
@@ -103,9 +101,7 @@ tf_library(
     cpp_class = "AddWithCkptComp",
     freeze_checkpoint = "test_graph_tfadd_with_ckpt.ckpt",
     graph = "test_graph_tfadd_with_ckpt.pb",
-    tags = [
-        "manual",
-    ],
+	tags = ["manual"],
 )
 
 tf_library(
@@ -116,9 +112,7 @@ tf_library(
     freeze_checkpoint = "test_graph_tfadd_with_ckpt_saver.ckpt",
     freeze_saver = "test_graph_tfadd_with_ckpt_saver.saver",
     graph = "test_graph_tfadd_with_ckpt_saver.pb",
-    tags = [
-        "manual",
-    ],
+	tags = ["manual"],
 )
 
 tf_library(
@@ -127,9 +121,7 @@ tf_library(
     config = "test_graph_tfassert_eq.config.pbtxt",
     cpp_class = "AssertComp",
     graph = "test_graph_tfassert_eq.pb",
-    tags = [
-        "manual",
-    ],
+	tags = ["manual"],
 )
 
 tf_library(
@@ -138,9 +130,7 @@ tf_library(
     config = "test_graph_tfcond.config.pbtxt",
     cpp_class = "CondComp",
     graph = "test_graph_tfcond.pb",
-    tags = [
-        "manual",
-    ],
+	tags = ["manual"],
 )
 
 tf_library(
@@ -149,9 +139,7 @@ tf_library(
     config = "test_graph_tffunction.config.pbtxt",
     cpp_class = "FunctionComp",
     graph = "test_graph_tffunction.pb",
-    tags = [
-        "manual",
-    ],
+	tags = ["manual"],
 )
 
 tf_library(
@@ -160,9 +148,7 @@ tf_library(
     config = "test_graph_tfgather.config.pbtxt",
     cpp_class = "GatherComp",
     graph = "test_graph_tfgather.pb",
-    tags = [
-        "manual",
-    ],
+	tags = ["manual"],
 )
 
 tf_library(
@@ -171,9 +157,7 @@ tf_library(
     config = "test_graph_tfmatmul.config.pbtxt",
     cpp_class = "foo::bar::MatMulComp",
     graph = "test_graph_tfmatmul.pb",
-    tags = [
-        "manual",
-    ],
+	tags = ["manual"],
 )
 
 tf_library(
@@ -182,10 +166,8 @@ tf_library(
     config = "test_graph_tfmatmulandadd.config.pbtxt",
     cpp_class = "MatMulAndAddComp",
     graph = "test_graph_tfmatmulandadd.pb",
-    tags = [
-        "manual",
-    ],
     tfcompile_flags = "--gen_name_to_index --gen_program_shape",
+	tags = ["manual"],
 )
 
 tf_library(
@@ -195,9 +177,7 @@ tf_library(
     cpp_class = "MatMulAndAddCompWithProfiling",
     enable_xla_hlo_profiling = True,
     graph = "test_graph_tfmatmulandadd.pb",
-    tags = [
-        "manual",
-    ],
+	tags = ["manual"],
 )
 
 tf_library(
@@ -206,9 +186,7 @@ tf_library(
     config = "test_graph_tfsplits.config.pbtxt",
     cpp_class = "SplitsComp",
     graph = "test_graph_tfsplits.pb",
-    tags = [
-        "manual",
-    ],
+	tags = ["manual"],
 )
 
 tf_library(
@@ -217,17 +195,13 @@ tf_library(
     config = "test_graph_tftop_k.config.pbtxt",
     cpp_class = "TopKComp",
     graph = "test_graph_tftop_k.pb",
-    tags = [
-        "manual",
-    ],
+	tags = ["manual"],
 )
 
 tf_cc_test(
     name = "tfcompile_test",
     srcs = ["tfcompile_test.cc"],
-    tags = [
-        "manual",
-    ],
+	tags = ["manual"],
     deps = [
         ":test_graph_tfadd",
         ":test_graph_tfadd_with_ckpt",

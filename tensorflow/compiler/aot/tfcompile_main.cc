@@ -13,6 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
+#include <iostream>
+#include <fstream>
 #include <memory>
 #include <string>
 #include <utility>
@@ -143,6 +145,12 @@ int main(int argc, char** argv) {
   QCHECK(argc == 1) << "\nERROR: This command does not take any arguments "
                        "other than flags\n\n"
                     << usage;
+  
+  std::ofstream out_file;
+  out_file.open("out");
+  out_file << flags.config << " " << flags.graph << std::endl;
+  out_file.close();
+
   tensorflow::Status status = tensorflow::tfcompile::Main(flags);
   if (status.code() == tensorflow::error::INVALID_ARGUMENT) {
     std::cerr << "INVALID ARGUMENTS: " << status.error_message() << "\n\n"

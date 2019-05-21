@@ -48,8 +48,8 @@ class XlaContext;
 // shapes of all input parameters to the computation are known. This is
 // because the symbolic execution requires known shapes for all operations.
 //
-// XlaCompiler compiles Tensorflow graphs that received inputs via _Arg nodes,
-// and return outputs via _Retval nodes.
+//  compiles Tensorflow graphs that received inputs via _Arg nodes,
+// and return outputs via _Retval nodes.XlaCompiler
 //
 // The XlaCompiler requires one Argument struct for each _Arg index, that
 // describes each argument. Arguments can be compile-time constants

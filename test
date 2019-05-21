@@ -1,0 +1,3 @@
+#!/bin/bash
+cd tmp
+./../bazel-bin/tensorflow/compiler/aot/tfcompile --graph=test_graph_tfmatmulandadd.pb --config=test_graph_tfmatmulandadd.config.pbtxt --cpp_class="TmpComp"
