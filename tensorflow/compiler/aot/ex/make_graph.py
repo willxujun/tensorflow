@@ -21,8 +21,10 @@ def tfmatmulandadd(_):
   # This tests multiple outputs.
   x = array_ops.placeholder(dtypes.float32, name='x_hold')
   y = array_ops.placeholder(dtypes.float32, name='y_hold')
-  math_ops.matmul(x, y, name='x_y_prod')
-  math_ops.add(x, y, name='x_y_sum')
+  p = math_ops.matmul(x, y,name='x_y_prod')
+  q = math_ops.add(x, y,name='x_y_sum')
+  r = math_ops.matmul(p, q,name='prod')
+  print(r)
 
 def write_graph(build_graph, out_dir):
     """Build a graph using build_graph and write it out."""
@@ -35,7 +37,6 @@ def write_graph(build_graph, out_dir):
 
 def main(_):
     tfmatmulandadd(0)
-
     # launch the default graph
     sess = tf.Session()
 

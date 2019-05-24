@@ -1,14 +1,6 @@
 load("//tensorflow/compiler/aot:tfcompile.bzl", "tf_library")
 
 py_binary(
-    name = "interface",
-    srcs = ["interface.py"],
-    deps = [
-        "//tensorflow/compiler/tf2xla:tf2xla_proto_py"
-    ]
-)
-
-py_binary(
     name = "make_graph",
     srcs = ["make_graph.py"],
         )

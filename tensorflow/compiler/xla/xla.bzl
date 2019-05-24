@@ -2,6 +2,8 @@
 
 load("//tensorflow/core:platform/default/build_config.bzl",
      "cc_proto_library")
+load("//tensorflow/core:platform/default/build_config.bzl",
+     "py_proto_library")
 load("//tensorflow/core:platform/default/build_config_root.bzl",
      "if_static")
 
@@ -16,6 +18,16 @@ def xla_proto_library(name, srcs=[], deps=[], visibility=None, testonly=0, **kwa
                        ["@protobuf_archive//:protobuf"],
                        otherwise=["@protobuf_archive//:protobuf_headers"],
                    ),
+                   protoc="@protobuf_archive//:protoc",
+                   testonly=testonly,
+                   visibility=visibility,
+                   **kwargs)
+
+# xla_proto_library_py() is a dummy wrapper around py_proto_library
+def xla_proto_library_py(name, srcs=[], deps=[], visibility=None, testonly=0, **kwargs):
+  py_proto_library(name=name,
+                   srcs=srcs,
+                   deps=deps,
                    protoc="@protobuf_archive//:protoc",
                    testonly=testonly,
                    visibility=visibility,

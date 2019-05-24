@@ -1,6 +1,7 @@
 .DS_Store
 .ipynb_checkpoints
 node_modules
+/tensorflow/compiler/aot/ex/vis
 /.tf_configure.bazelrc
 /bazel-*
 /bazel_pip
